@@ -38,6 +38,7 @@ module.exports = {
         // __dirname:nodejs的变量，代表当前文件的文件夹目录
         path: path.resolve(__dirname, "../dist"),  //绝对路径
         filename: "static/js/main.js",
+        chunkFilename: 'static/js/[name].js', //给打包输出的其他文件命名
         clean: true  //打包前自动清空path整个目录
 
     },
@@ -187,6 +188,9 @@ module.exports = {
                 },
             }),
         ],
+        // splitChunks: {
+        //     chunks: "all", // 对所有模块都进行分割
+        // }
     },
     // 模式
     mode: 'production',

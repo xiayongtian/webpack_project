@@ -40,3 +40,11 @@ console.log(sum(3, 4, 5, 6, 7))
 //     module.hot.accept("./js/count.js")
 //     module.hot.accept("./js/sum.js")
 // }
+
+document.getElementById("btn").onclick = function () {
+    // 动态导入 --> 实现按需加载
+    // 即使只被引用了一次，也会代码分割
+    import(/* webpackChunkName:"mul" */ "./js/mul").then((res) => {
+        console.log('res', res.default(5, 3))
+    });
+};

@@ -9,6 +9,7 @@ import './scss/index2.scss'
 import './stylus/index.styl'
 import './css/iconfont.css'
 
+
 count()
 let a = 7
 console.log('a', a)
@@ -45,6 +46,15 @@ document.getElementById("btn").onclick = function () {
     // 动态导入 --> 实现按需加载
     // 即使只被引用了一次，也会代码分割
     import(/* webpackChunkName:"mul" */ "./js/mul").then((res) => {
-        console.log('res', res.default(5, 3))
+        console.log('res1', res.default(5, 3))
     });
 };
+
+// 添加promise代码
+const promise = Promise.resolve();
+promise.then(() => {
+    console.log("hello promise");
+});
+
+const arr = [1, 2, 4, 5]
+console.log(arr.includes(1))

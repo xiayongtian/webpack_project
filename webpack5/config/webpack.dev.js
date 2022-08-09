@@ -14,7 +14,7 @@ module.exports = {
         // __dirname:nodejs的变量，代表当前文件的文件夹目录
         path: undefined,
         filename: "static/js/main.js",
-        // clean: true
+        clean: true
     },
     // 加载器
     module: {

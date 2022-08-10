@@ -11,7 +11,7 @@ import './css/iconfont.css'
 
 
 count()
-let a = 7
+let a = 79090999
 console.log('a', a)
 console.log(sum(3, 4, 5, 6, 7))
 // ----------------测试eslint规则--------------------
@@ -42,18 +42,21 @@ console.log(sum(3, 4, 5, 6, 7))
 //     module.hot.accept("./js/sum.js")
 // }
 
+let a89 = 3459090090
+console.log(a89)
+
 document.getElementById("btn").onclick = function () {
     // 动态导入 --> 实现按需加载
     // 即使只被引用了一次，也会代码分割
     import(/* webpackChunkName:"mul" */ "./js/mul").then((res) => {
-        console.log('res1', res.default(5, 3))
+        console.log('res13490', res.default(5, 3))
     });
 };
 
 // 添加promise代码
 const promise = Promise.resolve();
 promise.then(() => {
-    console.log("hello promise");
+    console.log("hello23 promise");
 });
 
 const arr = [1, 2, 4, 5]

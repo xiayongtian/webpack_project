@@ -3,7 +3,9 @@ module.exports = {
     env: {
         node: true,//启用node中全局变量
         browser: true,//启用浏览器中全局变量
+        es6: true  //eslint处理es6语法，如promise
     },
+    parser: '@babel/eslint-parser',
     parserOptions: {
         ecmaVersion: 6,//es6
         sourceType: "module",//es module
@@ -14,5 +16,6 @@ module.exports = {
         "indent": [1, 4],
         "space-unary-ops": 2,
         "no-empty-function": 0,
-    }
+    },
+    plugins: ["import"], // 解决动态导入语法报错
 }

@@ -31,13 +31,13 @@ const getStyleLoaders = (pre) => {
       options:
         pre === "less-loader"
           ? {
-              // antd自定义主题配置
-              // 主题色文档：https://ant.design/docs/react/customize-theme-cn#Ant-Design-%E7%9A%84%E6%A0%B7%E5%BC%8F%E5%8F%98%E9%87%8F
-              lessOptions: {
-                modifyVars: { "@primary-color": "#1DA57A" },
-                javascriptEnabled: true,
-              },
-            }
+            // antd自定义主题配置
+            // 主题色文档：https://ant.design/docs/react/customize-theme-cn#Ant-Design-%E7%9A%84%E6%A0%B7%E5%BC%8F%E5%8F%98%E9%87%8F
+            lessOptions: {
+              modifyVars: { "@primary-color": "#1DA57A" },
+              javascriptEnabled: true,
+            },
+          }
           : {},
     },
   ].filter(Boolean);
@@ -113,23 +113,23 @@ module.exports = {
       template: path.resolve(__dirname, "../public/index.html"),
     }),
     isProduction &&
-      new MiniCssExtractPlugin({
-        filename: "static/css/[name].[contenthash:10].css",
-        chunkFilename: "static/css/[name].[contenthash:10].chunk.css",
-      }),
+    new MiniCssExtractPlugin({
+      filename: "static/css/[name].[contenthash:10].css",
+      chunkFilename: "static/css/[name].[contenthash:10].chunk.css",
+    }),
     isProduction &&
-      new CopyPlugin({
-        patterns: [
-          {
-            from: path.resolve(__dirname, "../public"),
-            to: path.resolve(__dirname, "../dist"),
-            globOptions: {
-              // 忽略index.html文件
-              ignore: ["**/index.html"],
-            },
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "../public"),
+          to: path.resolve(__dirname, "../dist"),
+          globOptions: {
+            // 忽略index.html文件
+            ignore: ["**/index.html"],
           },
-        ],
-      }),
+        },
+      ],
+    }),
     !isProduction && new ReactRefreshWebpackPlugin(),
   ].filter(Boolean),
   mode: isProduction ? "production" : "development",
@@ -202,10 +202,10 @@ module.exports = {
   },
   devServer: {
     host: "localhost",
-    port: 3000,
+    port: 3001,
     open: true,
     hot: true, // 开启HMR
-    historyApiFallback: true, // 解决前端路由刷新404问题
+    // historyApiFallback: true, // 解决前端路由刷新404问题
   },
   performance: false, // 关闭性能分析，提升打包速度
 };

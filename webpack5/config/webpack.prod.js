@@ -135,7 +135,7 @@ module.exports = {
                 __dirname,
                 "../node_modules/.cache/.eslintcache"
             ),
-            threads, //开启多进程和设置进程数量,多线程开启在打包时eslint会不警告错误，这应该是eslint的bug
+            threads, //开启多进程和设置进程数量,多线程开启在打包时eslint会不警告错误，这是eslint的bug
         }),
         // 以 index.html 为模板创建文件
         // 新的html文件有两个特点：1. 内容和源文件一致 2. 自动引入打包生成的js等资源

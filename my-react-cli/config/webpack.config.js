@@ -137,16 +137,16 @@ module.exports = {
   optimization: {
     splitChunks: {
       chunks: "all",
-      cacheGroups: {
-        // react react-dom react-router-dom 一起打包成一个js文件
+      cacheGroups: {  //注意只有代码里面被引用的包才会起作用
+        // react react-dom react-router-dom 一起打包成一个js文件，_?处理tnpm下载的包带有下划线,test可以是一个函数
         react: {
-          test: /[\\/]node_modules[\\/]react(.*)?[\\/]/,
+          test: /[\\/]node_modules[\\/]_?react(.*)?[\\/]/,
           name: "chunk-react",
           priority: 40,
         },
         // antd 单独打包
         antd: {
-          test: /[\\/]node_modules[\\/]antd[\\/]/,
+          test: /[\\/]node_modules[\\/]_?antd(.*)?[\\/]/,
           name: "chunk-antd",
           priority: 30,
         },
@@ -202,10 +202,10 @@ module.exports = {
   },
   devServer: {
     host: "localhost",
-    port: 3008,
+    port: 3031,
     open: true,
     hot: true, // 开启HMR
-    // historyApiFallback: true, // 解决前端路由刷新404问题
+    historyApiFallback: true, // 解决前端路由刷新404问题
   },
   performance: false, // 关闭性能分析，提升打包速度
 };

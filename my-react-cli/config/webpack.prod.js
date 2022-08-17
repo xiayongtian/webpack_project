@@ -22,7 +22,20 @@ const getStyleLoaders = (pre) => {
         },
       },
     },
-    pre,
+    pre && {
+      loader: pre,
+      options:
+        pre === "less-loader"
+          ? {
+            // antd自定义主题配置
+            // 主题色文档：https://ant.design/docs/react/customize-theme-cn#Ant-Design-%E7%9A%84%E6%A0%B7%E5%BC%8F%E5%8F%98%E9%87%8F
+            lessOptions: {
+              modifyVars: { "@primary-color": "#1DA57A" },
+              javascriptEnabled: true,
+            },
+          }
+          : {},
+    },
   ].filter(Boolean);
 };
 
@@ -75,8 +88,8 @@ module.exports = {
         include: path.resolve(__dirname, "../src"),
         loader: "babel-loader",
         options: {
-          cacheDirectory: true,
-          cacheCompression: false,
+          cacheDirectory: true, // 开启babel编译缓存
+          cacheCompression: false,  // 缓存文件不要压缩
         },
       },
     ],
@@ -114,6 +127,26 @@ module.exports = {
   optimization: {
     splitChunks: {
       chunks: "all",
+      cacheGroups: {  //注意只有代码里面被引用的包才会起作用
+        // react react-dom react-router-dom 一起打包成一个js文件，_?处理tnpm下载的包带有下划线,test可以是一个函数
+        react: {
+          test: /[\\/]node_modules[\\/]_?react(.*)?[\\/]/,
+          name: "chunk-react",
+          priority: 40,
+        },
+        // antd 单独打包
+        antd: {
+          test: /[\\/]node_modules[\\/]_?antd(.*)?[\\/]/,
+          name: "chunk-antd",
+          priority: 30,
+        },
+        // 剩下node_modules单独打包
+        libs: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "chunk-libs",
+          priority: 20,
+        },
+      },
     },
     runtimeChunk: {
       name: (entrypoint) => `runtime~${entrypoint.name}.js`,
@@ -155,4 +188,6 @@ module.exports = {
     // 自动补全文件扩展名
     extensions: [".jsx", ".js", ".json"]
   },
+  performance: false, // 关闭性能分析，提升打包速度
+
 };

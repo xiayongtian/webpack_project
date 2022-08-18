@@ -12,8 +12,8 @@ function RouterConfig({ history }) {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/about/:id" component={About} />
-        <Route path="/ability" component={Ability} />
-        <Route path="/serverList" component={ServerList} />
+        <Route path="/ability/:id" component={Ability} />
+        <Route path="/serverList/:name" component={ServerList} />
 
       </Switch>
     </Router>

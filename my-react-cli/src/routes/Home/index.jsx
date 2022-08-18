@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.less";
+import styles from "./style.less";
 import { Button } from 'antd';
 
 export default function Home({
@@ -10,13 +10,14 @@ export default function Home({
   },
   history,
 }) {
-  return <h1 className="home-title">
+  return (<div><h1 className={styles.home}> home </h1 >
     <Button
       type="primary"
       onClick={() => {
-        history.push("/about/10")
-      }}>点击</Button>
-  </h1>;
+        history.push("/about/9")
+      }}><span className={styles.home}>点击123</span></Button>
+  </div >
+  )
 }
 
 

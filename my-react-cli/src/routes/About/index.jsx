@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
-// @withRouter
+import styles from "./index.less";
+
 class About extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,9 @@ class About extends Component {
   render() {
     console.log('about:', this.props)
     return (
-      <div onClick={() => { this.props.history.push("/serverList") }}>关于</div>
+      <div onClick={() => { this.props.history.push("/serverList") }}>关于
+        <div className={styles.aboutColor}>hahah</div>
+      </div>
     )
   }
 }

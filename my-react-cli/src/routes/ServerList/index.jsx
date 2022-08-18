@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.less";
+import styles from "./index.less";
 import { Button } from 'antd';
 
 export default function Home({
@@ -10,8 +10,8 @@ export default function Home({
   },
   history,
 }) {
-  return <h1 className="home-title">
-    服务列表
+  return <h1 className={styles.homeServer}>
+    服务列表123
     <Button
       type="primary"
       onClick={() => {

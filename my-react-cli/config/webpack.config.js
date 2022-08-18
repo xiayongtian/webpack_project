@@ -34,7 +34,7 @@ const getStyleLoaders = (pre) => {
             // antd自定义主题配置
             // 主题色文档：https://ant.design/docs/react/customize-theme-cn#Ant-Design-%E7%9A%84%E6%A0%B7%E5%BC%8F%E5%8F%98%E9%87%8F
             lessOptions: {
-              modifyVars: { "@primary-color": "#1DA57A" },
+              // modifyVars: { "@primary-color": "#1DA57A" },
               javascriptEnabled: true,
             },
           }
@@ -44,7 +44,7 @@ const getStyleLoaders = (pre) => {
 };
 
 module.exports = {
-  entry: "./src/main.js",
+  entry: "./src/index.js",
   output: {
     path: isProduction ? path.resolve(__dirname, "../dist") : undefined,
     filename: isProduction ? "static/js/[name].[contenthash:10].js" : "static/js/[name].js",
@@ -202,7 +202,7 @@ module.exports = {
   },
   devServer: {
     host: "localhost",
-    port: 3031,
+    port: 3044,
     open: true,
     hot: true, // 开启HMR
     historyApiFallback: true, // 解决前端路由刷新404问题

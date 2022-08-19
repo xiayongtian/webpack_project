@@ -15,16 +15,7 @@ const isProduction = process.env.NODE_ENV === "production";
 const getStyleLoaders = (pre) => {
   return [
     isProduction ? MiniCssExtractPlugin.loader : "style-loader",
-    {
-      loader: 'css-loader',
-      options: {
-        modules: {    // 配置css模块化
-          mode: "local",
-          exportGlobals: true,
-          localIdentName: isProduction ? '[hash:base64:10]' : '[name]__[local]'
-        },
-      },
-    },
+    'css-loader',
     {
       // 处理css兼容性问题
       // 配合package.json中browserslist来指定兼容性
@@ -211,7 +202,7 @@ module.exports = {
   },
   devServer: {
     host: "localhost",
-    port: 3087,
+    port: 5003,
     open: true,
     hot: true, // 开启HMR
     historyApiFallback: true, // 解决前端路由刷新404问题

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { Component, Fragment } from 'react';
-import styles from "./index.less";
+import styles from "./index.module.less";
 
 class About extends Component {
   constructor(props) {

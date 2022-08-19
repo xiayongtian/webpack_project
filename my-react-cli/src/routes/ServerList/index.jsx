@@ -11,7 +11,7 @@ export default function Home({
   history,
 }) {
   return <h1 className={styles.homeServer}>
-    服务列表123
+    服务列表12323123
     <Button
       type="primary"
       onClick={() => {

@@ -14,8 +14,8 @@ export default function Home({
     <Button
       type="primary"
       onClick={() => {
-        history.push("/about/9")
-      }}><span className={styles.home}>点击123</span></Button>
+        history.push("/serverList")
+      }}><span className={styles.home}>点击123459342430</span></Button>
   </div >
   )
 }

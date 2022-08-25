@@ -202,7 +202,7 @@ module.exports = {
   },
   devServer: {
     host: "localhost",
-    port: 5003,
+    port: 5005,
     open: true,
     hot: true, // 开启HMR
     historyApiFallback: true, // 解决前端路由刷新404问题

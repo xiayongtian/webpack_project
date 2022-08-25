@@ -1,60 +1,86 @@
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-import { Menu } from 'antd';
+import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import { Breadcrumb, Layout, Menu } from 'antd';
 import React from 'react';
-
-function getItem(label, key, icon, children, type) {
+import './style.module.less'
+import example from "../../models/example.js"
+const { Header, Content, Footer, Sider } = Layout;
+const items1 = ['1', '2', '3'].map((key) => ({
+  key,
+  label: `nav ${key}`,
+}));
+const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
+  const key = String(index + 1);
   return {
-    key,
-    icon,
-    children,
-    label,
-    type,
+    key: `sub${key}`,
+    icon: React.createElement(icon),
+    label: `subnav ${key}`,
+    children: new Array(4).fill(null).map((_, j) => {
+      const subKey = index * 4 + j + 1;
+      return {
+        key: subKey,
+        label: `option${subKey}`,
+      };
+    }),
   };
-}
+});
 
-const items = [
-  getItem('Navigation One', 'sub1', <MailOutlined />, [
-    getItem('Item 1', 'g1', null, [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
-    getItem('Item 2', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
-  ]),
-  getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
-    getItem('Option 5', '5'),
-    getItem('Option 6', '6'),
-    getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
-  ]),
-  getItem('Navigation Three', 'sub4', <SettingOutlined />, [
-    getItem('Option 9', '9'),
-    getItem('Option 10', '10'),
-    getItem('Option 11', '11'),
-    getItem('Option 12', '12'),
-  ]),
-];
+console.log('example', example.state.name)
 
-const Home = ({
-  match: {
-    params: {
-      id,
-    },
-  },
-  history,
-}) => {
-  const onClick = (e) => {
-    console.log('click ', e);
-    history.push("/about/10")
-  };
-
-  return (
-    <Menu
-      onClick={onClick}
+const Home = () => (
+  <Layout>
+    <Header className="header">
+      <div className="logo" />
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
+    </Header>
+    <Content
       style={{
-        width: 256,
+        padding: '0 50px',
       }}
-      defaultSelectedKeys={['1']}
-      defaultOpenKeys={['sub1']}
-      mode="inline"
-      items={items}
-    />
-  );
-};
+    >
+      <Breadcrumb
+        style={{
+          margin: '16px 0',
+        }}
+      >
+        <Breadcrumb.Item>Home</Breadcrumb.Item>
+        <Breadcrumb.Item>List</Breadcrumb.Item>
+        <Breadcrumb.Item>Home</Breadcrumb.Item>
+      </Breadcrumb>
+      <Layout
+        className="site-layout-background"
+        style={{
+          padding: '24px 0',
+        }}
+      >
+        <Sider className="site-layout-background" width={200}>
+          <Menu
+            mode="inline"
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['sub1']}
+            style={{
+              height: '100%',
+            }}
+            items={items2}
+          />
+        </Sider>
+        <Content
+          style={{
+            padding: '0 24px',
+            minHeight: 280,
+          }}
+        >
+          Content
+        </Content>
+      </Layout>
+    </Content>
+    <Footer
+      style={{
+        textAlign: 'center',
+      }}
+    >
+      Ant Design ©2018 Created by Ant UED
+    </Footer>
+  </Layout>
+);
 
 export default Home;

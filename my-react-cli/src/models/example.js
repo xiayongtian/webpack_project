@@ -1,7 +1,7 @@
 
 const example = {
   namespace: '@data-example',
-  state: {},
+  state: { name: 'xiawei89' },
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
     },
